@@ -69,8 +69,8 @@ export default function Academics() {
       />
 
       {/* Services Grid */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -101,14 +101,14 @@ export default function Academics() {
       </section>
 
       {/* Why Choose Me Details */}
-      <section className="py-24 bg-white/5">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-16 sm:py-24 bg-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-white mb-8">Best Website Developer <span className="text-[#3B82F6]">In Delhi</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8">Best Website Developer <span className="text-[#3B82F6]">In Delhi</span></h2>
             <div className="space-y-6">
               <div className="flex gap-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mt-3 flex-shrink-0" />
@@ -134,7 +134,7 @@ export default function Academics() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+            <div className="aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/5">
               <img 
                 src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" 
                 alt="Web Development" 

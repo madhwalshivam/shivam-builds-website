@@ -195,9 +195,9 @@ export default function ServiceDetail({ onBookNow }: ServiceDetailProps) {
       />
 
       {/* Features Grid */}
-      <section className="py-24 px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-20 items-center mb-32">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-16 sm:mb-32">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -205,7 +205,7 @@ export default function ServiceDetail({ onBookNow }: ServiceDetailProps) {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-[#3B82F6] tracking-[0.2em] uppercase mb-4 font-bold">Key Features</h2>
-              <h3 className="text-white text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
+              <h3 className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
                 Solutions built for <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">Modern Businesses</span>
               </h3>
@@ -224,9 +224,9 @@ export default function ServiceDetail({ onBookNow }: ServiceDetailProps) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative"
+              className="relative w-full"
             >
-              <div className="aspect-square rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
+              <div className="aspect-square rounded-[2rem] sm:rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
                 <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#3B82F6]/20 to-transparent" />
               </div>
@@ -265,15 +265,15 @@ export default function ServiceDetail({ onBookNow }: ServiceDetailProps) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-32 p-12 rounded-[3rem] bg-gradient-to-r from-[#3B82F6]/20 to-[#2563EB]/20 border border-[#3B82F6]/30 text-center"
+            className="mt-20 sm:mt-32 p-6 sm:p-12 rounded-3xl sm:rounded-[3rem] bg-gradient-to-r from-[#3B82F6]/20 to-[#2563EB]/20 border border-[#3B82F6]/30 text-center"
           >
-            <h2 className="text-white text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+            <h2 className="text-white text-2xl sm:text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
               Ready to build your <br /> next project?
             </h2>
             <Button 
               size="lg" 
               onClick={onBookNow}
-              className="bg-[#3B82F6] hover:bg-white text-black font-bold px-12 py-8 rounded-2xl text-xl shadow-2xl transition-all"
+              className="bg-[#3B82F6] hover:bg-white text-black font-bold w-full sm:w-auto px-6 sm:px-12 py-4 sm:py-6 rounded-xl sm:rounded-2xl text-base sm:text-lg md:text-xl shadow-2xl transition-all"
             >
               Book a Free Consultation
             </Button>
