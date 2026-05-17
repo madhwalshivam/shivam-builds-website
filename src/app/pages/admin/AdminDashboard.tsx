@@ -53,36 +53,36 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-12">
           <div>
-            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+            <h1 className="text-4xl font-bold tracking-tight text-white">
               Admin Dashboard
             </h1>
-            <p className="text-gray-400 mt-2">Manage your blog posts and content</p>
+            <p className="text-gray-400 mt-2 text-sm">Manage your blog posts and content</p>
           </div>
           <div className="flex gap-4">
             <Link
               to="/admin/bookings"
-              className="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-6 py-3 rounded-xl font-bold transition-all border border-white/10"
+              className="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all border border-white/10"
             >
-              <LayoutDashboard size={20} /> Bookings
+              <LayoutDashboard size={18} /> Bookings
             </Link>
             <Link
               to="/admin/new"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-all"
+              className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-md cursor-pointer"
             >
-              <Plus size={20} /> New Blog
+              <Plus size={18} /> New Blog
             </Link>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-6 py-3 rounded-xl font-bold transition-all border border-white/10"
+              className="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all border border-white/10 cursor-pointer"
             >
-              <LogOut size={20} /> Logout
+              <LogOut size={18} /> Logout
             </button>
           </div>
         </div>
 
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-700"></div>
           </div>
         ) : (
           <div className="grid gap-6">
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
                   key={blog.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center hover:border-blue-500/30 transition-all group"
+                  className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center hover:border-blue-700/30 transition-all group"
                 >
                   <div className="w-full md:w-48 aspect-video rounded-xl overflow-hidden bg-gray-900 flex-shrink-0">
                     {blog.image_url ? (
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
                   
                   <div className="flex-grow">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                      <span className="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded bg-blue-700/10 text-blue-400 border border-blue-700/20">
                         {blog.category || 'General'}
                       </span>
                       <span className="text-xs text-gray-500">
@@ -135,7 +135,7 @@ export default function AdminDashboard() {
                     </Link>
                     <Link
                       to={`/admin/edit/${blog.id}`}
-                      className="p-3 bg-blue-500/10 hover:bg-blue-500/20 rounded-xl transition-all text-blue-400"
+                      className="p-3 bg-blue-700/10 hover:bg-blue-700/20 rounded-xl transition-all text-blue-400"
                       title="Edit Blog"
                     >
                       <Edit size={20} />

@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import ServiceDetail from "./pages/ServiceDetail";
 
 // Admin Pages
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import BlogEditor from "./pages/admin/BlogEditor";
@@ -58,10 +59,12 @@ function AppContent() {
         
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/bookings" element={<AdminBookings />} />
-        <Route path="/admin/new" element={<BlogEditor />} />
-        <Route path="/admin/edit/:id" element={<BlogEditor />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/bookings" element={<AdminBookings />} />
+          <Route path="/admin/new" element={<BlogEditor />} />
+          <Route path="/admin/edit/:id" element={<BlogEditor />} />
+        </Route>
         
         <Route path="/contact" element={<Contact />} />
       </Routes>

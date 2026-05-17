@@ -32,12 +32,11 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600"></div>
+      <div className="w-full max-w-md bg-[#0A0A0A] border border-white/10 rounded-2xl p-8 relative overflow-hidden">
         
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white">Admin Access</h1>
-          <p className="text-gray-400 mt-2">Sign in to manage your blogs</p>
+          <h1 className="text-3xl font-bold text-white tracking-tight">Admin Access</h1>
+          <p className="text-gray-400 mt-2 text-sm">Sign in to manage your blogs</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
@@ -50,7 +49,7 @@ export default function AdminLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-blue-500 transition-all text-white"
+                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-blue-700 transition-all text-white text-sm"
                 placeholder="admin@example.com"
               />
             </div>
@@ -65,7 +64,7 @@ export default function AdminLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-blue-500 transition-all text-white"
+                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-blue-700 transition-all text-white text-sm"
                 placeholder="••••••••"
               />
             </div>
@@ -74,14 +73,14 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
+            className="w-full bg-blue-700 hover:bg-blue-800 disabled:bg-blue-900 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
           >
-            {loading ? <Loader2 className="animate-spin" size={20} /> : null}
+            {loading ? <Loader2 className="animate-spin" size={18} /> : null}
             Sign In
           </button>
         </form>
 
-        <p className="mt-8 text-center text-xs text-gray-600">
+        <p className="mt-8 text-center text-[11px] text-gray-600">
           Protected by Supabase Auth
         </p>
       </div>

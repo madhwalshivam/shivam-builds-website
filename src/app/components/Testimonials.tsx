@@ -1,23 +1,41 @@
 import { motion } from "motion/react";
 import { Quote, Star } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const testimonials = [
   {
     name: "Rajesh Kumar",
-    role: "CEO, TechFlow Solutions",
     content: "Shivam transformed our legacy CRM into a modern growth engine. His technical depth and marketing insight are unmatched in Delhi.",
     rating: 5,
   },
   {
     name: "Anjali Sharma",
-    role: "Founder, E-com Hub",
     content: "The e-commerce platform Shivam built for us saw a 40% increase in conversion within the first month. Highly recommended for scaling brands.",
     rating: 5,
   },
   {
     name: "Vikram Singh",
-    role: "Director, Global Academy",
     content: "Expert handling of our School ERP project. The automation features have saved us hundreds of hours in administration.",
+    rating: 5,
+  },
+  {
+    name: "Amit Verma",
+    content: "Superb execution on our Real Estate portal. The map integration and filter search features are extremely fast and user-friendly.",
+    rating: 5,
+  },
+  {
+    name: "Pooja Mehta",
+    content: "Our clinic saw a 3x increase in online bookings after Shivam rebuilt our corporate site with optimized local SEO. Outstanding talent!",
+    rating: 5,
+  },
+  {
+    name: "Rahul Saxena",
+    content: "Delivered a high-end UI/UX for our fintech SaaS product in record time. His attention to micro-interactions and performance is stellar.",
     rating: 5,
   },
 ];
@@ -46,36 +64,86 @@ export function Testimonials() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="relative p-8 rounded-3xl bg-[#111111] border border-white/5 hover:border-[#3B82F6]/30 transition-all duration-300 group"
-            >
-              <Quote className="w-12 h-12 text-[#3B82F6] opacity-10 absolute top-6 right-6" />
-              
-              <div className="flex gap-1 mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-[#3B82F6] fill-[#3B82F6]" />
-                ))}
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="pb-16"
+          >
+            {testimonials.map((testimonial) => (
+              <SwiperSlide key={testimonial.name} className="h-auto">
+                <div className="relative p-8 rounded-3xl bg-[#111111] border border-white/5 hover:border-[#3B82F6]/30 transition-all duration-300 group flex flex-col justify-between h-full w-full">
+                  <div>
+                    <Quote className="w-12 h-12 text-[#3B82F6] opacity-10 absolute top-6 right-6" />
+                    
+                    <div className="flex gap-1 mb-6">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-[#3B82F6] fill-[#3B82F6]" />
+                      ))}
+                    </div>
 
-              <p className="text-[#94A3B8] text-lg leading-relaxed mb-8 italic">
-                "{testimonial.content}"
-              </p>
+                    <p className="text-[#94A3B8] text-base md:text-lg leading-relaxed mb-8 italic">
+                      "{testimonial.content}"
+                    </p>
+                  </div>
 
-              <div>
-                <h4 className="text-white font-bold text-xl mb-1">{testimonial.name}</h4>
-                <p className="text-[#3B82F6] text-sm font-medium">{testimonial.role}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  <div>
+                    <h4 className="text-white font-bold text-xl">{testimonial.name}</h4>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </motion.div>
       </div>
+
+      <style>{`
+        .swiper-pagination-bullet {
+          background: #3B82F6 !important;
+          opacity: 0.3;
+        }
+        .swiper-pagination-bullet-active {
+          background: #3B82F6 !important;
+          opacity: 1;
+          width: 20px !important;
+          border-radius: 9999px !important;
+          transition: width 0.3s ease;
+        }
+        .swiper {
+          overflow: visible !important;
+        }
+        .swiper-wrapper {
+          align-items: stretch;
+        }
+        .swiper-slide {
+          height: auto !important;
+          display: flex;
+        }
+      `}</style>
     </section>
   );
 }

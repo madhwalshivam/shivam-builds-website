@@ -124,7 +124,7 @@ export default function BlogEditor() {
   if (fetching) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-        <Loader2 className="animate-spin text-blue-500" size={48} />
+        <Loader2 className="animate-spin text-blue-700" size={48} />
       </div>
     );
   }
@@ -148,7 +148,7 @@ export default function BlogEditor() {
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20"
+              className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 disabled:bg-blue-900 text-white px-8 py-3 rounded-xl font-semibold transition-all cursor-pointer"
             >
               {loading ? <Loader2 className="animate-spin" size={20} /> : <Save size={20} />}
               {id ? "Update Post" : "Publish Post"}
@@ -167,7 +167,7 @@ export default function BlogEditor() {
                     value={formData.title}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all text-xl font-bold"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-700 transition-all text-xl font-bold"
                     placeholder="Enter an eye-catching title..."
                   />
                 </div>
@@ -179,7 +179,7 @@ export default function BlogEditor() {
                     value={formData.description}
                     onChange={handleChange}
                     rows={3}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-700 transition-all"
                     placeholder="Brief summary of the post..."
                   />
                 </div>
@@ -228,7 +228,7 @@ export default function BlogEditor() {
                   ) : (
                     <label className="flex flex-col items-center justify-center aspect-video rounded-xl border-2 border-dashed border-white/10 bg-white/5 hover:bg-white/10 cursor-pointer transition-all mb-4">
                       {uploading ? (
-                        <Loader2 className="animate-spin text-blue-500" />
+                        <Loader2 className="animate-spin text-blue-700" />
                       ) : (
                         <>
                           <Upload className="text-gray-500 mb-2" />
@@ -243,7 +243,7 @@ export default function BlogEditor() {
                     name="image_url"
                     value={formData.image_url}
                     onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-blue-700"
                     placeholder="Or paste direct image URL..."
                   />
                 </div>
@@ -255,7 +255,7 @@ export default function BlogEditor() {
                     name="slug"
                     value={formData.slug}
                     onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-700"
                     placeholder="how-to-scale-business"
                   />
                   <p className="text-[10px] text-gray-600 mt-1">Auto-generated from title. Editable.</p>
@@ -268,7 +268,7 @@ export default function BlogEditor() {
                     name="canonical_url"
                     value={formData.canonical_url}
                     onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-500"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-700"
                     placeholder="https://shivambuilds.in/blogs/post"
                   />
                   <p className="text-[10px] text-gray-600 mt-1">Auto-generated from slug. Editable for SEO.</p>

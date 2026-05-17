@@ -59,15 +59,15 @@ export default function AdminBookings() {
     <div className="min-h-screen bg-[#050505] text-white p-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+          <h1 className="text-4xl font-bold tracking-tight text-white">
             Booking Requests
           </h1>
-          <p className="text-gray-400 mt-2">Manage consultation requests from your website</p>
+          <p className="text-gray-400 mt-2 text-sm">Manage consultation requests from your website</p>
         </div>
 
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-700"></div>
           </div>
         ) : bookings.length === 0 ? (
           <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/5">
@@ -80,7 +80,7 @@ export default function AdminBookings() {
                 key={booking.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-blue-500/30 transition-all"
+                className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-blue-700/30 transition-all"
               >
                 <div className="space-y-4 flex-grow">
                   <div className="flex items-center gap-3">
@@ -94,19 +94,19 @@ export default function AdminBookings() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-400">
                     <div className="flex items-center gap-2">
-                      <Briefcase size={16} className="text-blue-500" />
+                      <Briefcase size={16} className="text-blue-700" />
                       {booking.service}
                     </div>
                     <div className="flex items-center gap-2">
-                      <Mail size={16} className="text-blue-500" />
+                      <Mail size={16} className="text-blue-700" />
                       {booking.email}
                     </div>
                     <div className="flex items-center gap-2">
-                      <Phone size={16} className="text-blue-500" />
+                      <Phone size={16} className="text-blue-700" />
                       {booking.phone}
                     </div>
                     <div className="flex items-center gap-2">
-                      <Calendar size={16} className="text-blue-500" />
+                      <Calendar size={16} className="text-blue-700" />
                       {new Date(booking.created_at).toLocaleDateString()}
                     </div>
                   </div>
