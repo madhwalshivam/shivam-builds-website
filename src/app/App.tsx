@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router";
+import { AnimatePresence, motion } from "motion/react";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -19,6 +20,24 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import BlogEditor from "./pages/admin/BlogEditor";
 import AdminBookings from "./pages/admin/AdminBookings";
+
+// Smooth page transition wrapper with automatic scroll restoration
+function PageTransition({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -15 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 function AppContent() {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
@@ -70,27 +89,29 @@ function AppContent() {
       
       {!isAdminRoute && <Navigation onBookNow={() => setIsPopUpOpen(true)} />}
       
-      <Routes>
-        <Route path="/" element={<Home onBookNow={() => setIsPopUpOpen(true)} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Academics />} />
-        <Route path="/services/:slug" element={<ServiceDetail onBookNow={() => setIsPopUpOpen(true)} />} />
-        
-        {/* Blog Routes */}
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/blogs/:slug" element={<BlogDetail />} />
-        
-        {/* Admin Routes */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/bookings" element={<AdminBookings />} />
-          <Route path="/admin/new" element={<BlogEditor />} />
-          <Route path="/admin/edit/:id" element={<BlogEditor />} />
-        </Route>
-        
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><Home onBookNow={() => setIsPopUpOpen(true)} /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+          <Route path="/services" element={<PageTransition><Academics /></PageTransition>} />
+          <Route path="/services/:slug" element={<PageTransition><ServiceDetail onBookNow={() => setIsPopUpOpen(true)} /></PageTransition>} />
+          
+          {/* Blog Routes */}
+          <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
+          <Route path="/blogs/:slug" element={<PageTransition><BlogDetail /></PageTransition>} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<PageTransition><AdminLogin /></PageTransition>} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/admin" element={<PageTransition><AdminDashboard /></PageTransition>} />
+            <Route path="/admin/bookings" element={<PageTransition><AdminBookings /></PageTransition>} />
+            <Route path="/admin/new" element={<PageTransition><BlogEditor /></PageTransition>} />
+            <Route path="/admin/edit/:id" element={<PageTransition><BlogEditor /></PageTransition>} />
+          </Route>
+          
+          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        </Routes>
+      </AnimatePresence>
 
       {!isAdminRoute && (
         <>
