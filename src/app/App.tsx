@@ -57,7 +57,7 @@ function AppContent() {
       document.head.appendChild(canonicalLink);
     }
 
-    const siteUrl = "https://shivambuilds.in";
+    const siteUrl = "https://www.shivambuilds.in";
     const cleanPath = location.pathname === "/" ? "" : location.pathname.replace(/\/+$/, "");
     const canonicalUrl = `${siteUrl}${cleanPath}`;
     

@@ -62,12 +62,12 @@ export default function BlogEditor() {
           .replace(/^-+|-+$/g, "");
         
         newData.slug = slug;
-        newData.canonical_url = `https://shivambuilds.in/blogs/${slug}`;
+        newData.canonical_url = `https://www.shivambuilds.in/blogs/${slug}`;
       }
 
       // If slug is manually changed, update canonical URL as well (optional, but helpful)
       if (name === "slug" && value) {
-        newData.canonical_url = `https://shivambuilds.in/blogs/${value}`;
+        newData.canonical_url = `https://www.shivambuilds.in/blogs/${value}`;
       }
       
       return newData;
@@ -269,7 +269,7 @@ export default function BlogEditor() {
                     value={formData.canonical_url}
                     onChange={handleChange}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-blue-700"
-                    placeholder="https://shivambuilds.in/blogs/post"
+                    placeholder="https://www.shivambuilds.in/blogs/post"
                   />
                   <p className="text-[10px] text-gray-600 mt-1">Auto-generated from slug. Editable for SEO.</p>
                 </div>

@@ -46,7 +46,9 @@ export default function BlogDetail() {
         canonicalLink.setAttribute("rel", "canonical");
         document.head.appendChild(canonicalLink);
       }
-      canonicalLink.setAttribute("href", blogData.canonical_url || `https://shivambuilds.in/blogs/${slug}`);
+      const rawCanonical = blogData.canonical_url || "";
+      const normalizedCanonical = rawCanonical.replace("https://shivambuilds.in", "https://www.shivambuilds.in") || `https://www.shivambuilds.in/blogs/${slug}`;
+      canonicalLink.setAttribute("href", normalizedCanonical);
 
       const { data: recentData } = await supabase
         .from("blogs")

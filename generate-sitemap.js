@@ -42,7 +42,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const DOMAIN = "https://shivambuilds.in";
+const DOMAIN = "https://www.shivambuilds.in";
 
 const staticPages = [
   { path: "/", priority: "1.0", changefreq: "daily" },
