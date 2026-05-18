@@ -40,6 +40,14 @@ export default function BlogDetail() {
       setBlog(blogData);
       document.title = `${blogData.title} | Shivam Builds`;
 
+      let canonicalLink = document.querySelector("link[rel='canonical']");
+      if (!canonicalLink) {
+        canonicalLink = document.createElement("link");
+        canonicalLink.setAttribute("rel", "canonical");
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute("href", blogData.canonical_url || `https://shivambuilds.in/blogs/${slug}`);
+
       const { data: recentData } = await supabase
         .from("blogs")
         .select("title, slug, image_url, created_at, category")

@@ -41,6 +41,29 @@ function AppContent() {
     return () => clearTimeout(initialTimer);
   }, [isAdminRoute]);
 
+  useEffect(() => {
+    if (isAdminRoute) {
+      const canonicalLink = document.querySelector("link[rel='canonical']");
+      if (canonicalLink) {
+        canonicalLink.remove();
+      }
+      return;
+    }
+
+    let canonicalLink = document.querySelector("link[rel='canonical']");
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalLink);
+    }
+
+    const siteUrl = "https://shivambuilds.in";
+    const cleanPath = location.pathname === "/" ? "" : location.pathname.replace(/\/+$/, "");
+    const canonicalUrl = `${siteUrl}${cleanPath}`;
+    
+    canonicalLink.setAttribute("href", canonicalUrl);
+  }, [location.pathname, isAdminRoute]);
+
   return (
     <div className="min-h-screen bg-[#050505] overflow-x-hidden">
       <Toaster position="top-center" richColors theme="dark" />
